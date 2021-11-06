@@ -63,9 +63,6 @@ class OnlineTranslator:
         headers = {'User-Agent': 'Mozilla/5.0'}
         r = self.s.get(url, headers=headers)
         soup = BeautifulSoup(r.content, 'html.parser')
-        # only works in terminal words = soup.find('div', {'id': 'translations-content'}).find_all('a', {'class': 'translation'})
-        # only works in terminal words = soup.find_all('a', class_='translation')
-        # only works in terminal words = soup.find_all('a', {'class': 'translation'})
         words = soup.find('div', {'id': 'translations-content'})
         words_list = [w.text.strip() for w in words if len(w.text.strip()) > 0]
         self.print(f'{l2.capitalize()} Translations:')
